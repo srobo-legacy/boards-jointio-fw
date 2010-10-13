@@ -25,6 +25,7 @@
 #include "libsric/sric.h"
 #include "libsric/sric-client.h"
 #include "libsric/token-10f.h"
+#include "out.h"
 
 const usci_t usci_config[1] = {
 	{
@@ -81,6 +82,8 @@ void init(void) {
 	/* Set DCO to 16MHz */
 	DCOCTL = CALDCO_16MHZ;
 	BCSCTL1 = CALBC1_16MHZ;
+
+	out_init();
 
 	pinint_init();
 	sched_init();
