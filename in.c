@@ -19,7 +19,13 @@
 #include <io.h>
 
 void in_init(void) {
-	P1DIR = 0x00;
+	/* LEDs */
+	P1OUT = 0x00;
+	P1DIR = 0xFF;
+
+	/* Inputs */
+	P2DIR &= ~0x1F; /* P2.0 to P2.4 */
+	P3DIR &= ~0xC1; /* P3.0, P3.6 and P3.7 */
 }
 
 uint8_t in_get_a(void) {
