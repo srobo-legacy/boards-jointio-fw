@@ -17,7 +17,32 @@
 
 #include "cmds.h"
 
+static uint8_t sric_output_set(const sric_if_t *iface);
+static uint8_t sric_output_get(const sric_if_t *iface);
+static uint8_t sric_input_a(const sric_if_t *iface);
+static uint8_t sric_input_d(const sric_if_t *iface);
+
 const sric_cmd_t sric_commands[] = {
+	{sric_output_set},
+	{sric_output_get},
+	{sric_input_a},
+	{sric_input_d}
 };
 
 const uint8_t sric_cmd_num = sizeof(sric_commands) / sizeof(const sric_cmd_t);
+
+static uint8_t sric_output_set(const sric_if_t *iface) {
+	return 0;
+}
+
+static uint8_t sric_output_get(const sric_if_t *iface) {
+	return 0;
+}
+
+static uint8_t sric_input_a(const sric_if_t *iface) {
+	return 0;
+}
+
+static uint8_t sric_input_d(const sric_if_t *iface) {
+	return 0;
+}
