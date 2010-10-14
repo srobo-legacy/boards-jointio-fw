@@ -41,7 +41,7 @@ void in_init(void) {
 	/* Setup ADC DTC (Data Transfer Controller) module */
 	ADC10DTC0 = ADC10CT;       /* Continuously trasnfer data */
 	ADC10DTC1 = 8;             /* Block is 8 samples long */
-	ADC10SA = (uint16_t)&in_buffer;      /* Set address to write samples to */
+	ADC10SA = (uint16_t)in_buffer;   /* Set address to write samples to */
 
 	ADC10CTL0 |= ENC | ADC10SC; /* Enable/Start conversion */
 }
