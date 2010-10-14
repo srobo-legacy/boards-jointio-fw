@@ -24,9 +24,9 @@ void out_init(void) {
 }
 
 void out_set(uint8_t a) {
-	P4OUT = a;
+	P4OUT = ~a;
 }
 
 uint8_t out_get(void) {
-	return P4OUT;
+	return ~P4OUT;
 }
