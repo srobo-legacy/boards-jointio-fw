@@ -50,10 +50,6 @@ void in_set(uint8_t a) {
 	P1OUT = a;
 }
 
-uint8_t in_get_a(void) {
-	return P1OUT;
-}
-
 uint8_t in_get_d(void) {
 	return P1OUT;
 }
