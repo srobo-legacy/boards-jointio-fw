@@ -40,16 +40,16 @@ static uint8_t sric_output_set(const sric_if_t *iface) {
 }
 
 static uint8_t sric_output_get(const sric_if_t *iface) {
-	iface->txbuf[0] = out_get();
+	iface->txbuf[SRIC_DATA+0] = out_get();
 	return 1;
 }
 
 static uint8_t sric_input_a(const sric_if_t *iface) {
-	memcpy(iface->txbuf, in_buffer, 16);
+	memcpy(iface->txbuf+SRIC_DATA, in_buffer, 16);
 	return 16;
 }
 
 static uint8_t sric_input_d(const sric_if_t *iface) {
-	iface->txbuf[0] = in_get_d();
+	iface->txbuf[0+SRIC_DATA] = in_get_d();
 	return 1;
 }
