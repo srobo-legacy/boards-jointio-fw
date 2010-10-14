@@ -15,6 +15,7 @@
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
+#include <string.h>
 #include "cmds.h"
 #include "out.h"
 #include "in.h"
@@ -44,7 +45,8 @@ static uint8_t sric_output_get(const sric_if_t *iface) {
 }
 
 static uint8_t sric_input_a(const sric_if_t *iface) {
-	return 0;
+	memcpy(iface->txbuf, in_buffer, 16);
+	return 16;
 }
 
 static uint8_t sric_input_d(const sric_if_t *iface) {
