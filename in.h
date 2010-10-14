@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+extern uint16_t in_buffer[8];
+
 void in_init(void);
 
 void in_set(uint8_t);
