@@ -28,6 +28,10 @@ void in_init(void) {
 	P3DIR &= ~0xC1; /* P3.0, P3.6 and P3.7 */
 }
 
+void in_set(uint8_t a) {
+	P1OUT = a;
+}
+
 uint8_t in_get_a(void) {
 	return P1OUT;
 }
