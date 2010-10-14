@@ -24,8 +24,7 @@ void in_init(void) {
 	P1DIR = 0xFF;
 
 	/* Inputs */
-	P2DIR &= ~0x1F; /* P2.0 to P2.4 */
-	P3DIR &= ~0xC1; /* P3.0, P3.6 and P3.7 */
+	ADC10AE0 = 0xFF;
 }
 
 void in_set(uint8_t a) {
