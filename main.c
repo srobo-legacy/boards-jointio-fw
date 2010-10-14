@@ -25,6 +25,7 @@
 #include "libsric/sric.h"
 #include "libsric/sric-client.h"
 #include "libsric/token-10f.h"
+#include "smps.h"
 #include "out.h"
 #include "in.h"
 
@@ -84,6 +85,7 @@ void init(void) {
 	DCOCTL = CALDCO_16MHZ;
 	BCSCTL1 = CALBC1_16MHZ;
 
+	smps_init();
 	out_init();
 	in_init();
 
