@@ -51,5 +51,12 @@ void in_set(uint8_t a) {
 }
 
 uint8_t in_get_d(void) {
-	return P1OUT;
+	uint8_t i, a = 0;
+
+	for (i = 0; i < 8; i++) {
+		if (in_buffer[i] > INPUT_THRESHOLD)
+			a |= 1<<i;
+	}
+
+	return a;
 }

@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#define INPUT_THRESHOLD (1024/2)
+
 extern uint16_t in_buffer[8];
 
 void in_init(void);
