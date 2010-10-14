@@ -19,7 +19,7 @@
 #include <io.h>
 
 void out_init(void) {
-	P4OUT = 0x00;
+	P4OUT = 0xff;
 	P4DIR = 0xff;
 }
 
