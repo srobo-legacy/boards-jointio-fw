@@ -3,6 +3,6 @@
 
 void smps_init(void);
 void smps_en(void);
-void spms_dis(void);
+void smps_dis(void);
 
 #endif /* __SMPS_H */
