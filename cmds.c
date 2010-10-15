@@ -19,17 +19,20 @@
 #include "cmds.h"
 #include "out.h"
 #include "in.h"
+#include "smps.h"
 
 static uint8_t sric_output_set(const sric_if_t *iface);
 static uint8_t sric_output_get(const sric_if_t *iface);
 static uint8_t sric_input_a(const sric_if_t *iface);
 static uint8_t sric_input_d(const sric_if_t *iface);
+static uint8_t sric_smps(const sric_if_t *iface);
 
 const sric_cmd_t sric_commands[] = {
 	{sric_output_set},
 	{sric_output_get},
 	{sric_input_a},
-	{sric_input_d}
+	{sric_input_d},
+	{sric_smps},
 };
 
 const uint8_t sric_cmd_num = sizeof(sric_commands) / sizeof(const sric_cmd_t);
@@ -52,4 +55,12 @@ static uint8_t sric_input_a(const sric_if_t *iface) {
 static uint8_t sric_input_d(const sric_if_t *iface) {
 	iface->txbuf[0+SRIC_DATA] = in_get_d();
 	return 1;
+}
+
+static uint8_t sric_smps(const sric_if_t *iface) {
+	if (iface->rxbuf[SRIC_DATA+1])
+		smps_en();
+	else
+		smps_dis();
+	return 0;
 }
