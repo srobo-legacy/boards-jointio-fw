@@ -19,6 +19,7 @@
 #include <io.h>
 
 void smps_init(void) {
+	P2SEL &= ~(1<<7);
 	P2OUT |= 1<<7;
 	P2DIR |= 1<<7;
 }
