@@ -1,3 +1,4 @@
-jointio
+jointio-top
+jointio-bottom
 *.o
 depend
