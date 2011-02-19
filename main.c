@@ -25,6 +25,8 @@
 #include "libsric/sric.h"
 #include "libsric/sric-client.h"
 #include "libsric/token-10f.h"
+#include "flash430/flash.h"
+#include "flash430/sric-flash.h"
 #include "smps.h"
 #include "out.h"
 #include "in.h"
@@ -108,5 +110,6 @@ int main(void) {
 
 	while(1) {
 		in_set(in_get_d());
+		sric_flash_poll();
 	}
 }

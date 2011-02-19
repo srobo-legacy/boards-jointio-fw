@@ -20,6 +20,7 @@
 #include "out.h"
 #include "in.h"
 #include "smps.h"
+#include "flash430/sric-flash.h"
 
 static uint8_t sric_output_set(const sric_if_t *iface);
 static uint8_t sric_output_get(const sric_if_t *iface);
@@ -33,6 +34,11 @@ const sric_cmd_t sric_commands[] = {
 	{sric_input_a},
 	{sric_input_d},
 	{sric_smps},
+	{sric_flashr_fw_ver},
+	{sric_flashw_fw_chunk},
+	{sric_flashr_fw_next},
+	{sric_flashr_crc},
+	{sric_flashw_confirm},
 };
 
 const uint8_t sric_cmd_num = sizeof(sric_commands) / sizeof(const sric_cmd_t);
