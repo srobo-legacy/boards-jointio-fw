@@ -111,5 +111,6 @@ int main(void) {
 	while(1) {
 		in_set(in_get_d());
 		sric_flash_poll();
+		sric_poll();
 	}
 }
