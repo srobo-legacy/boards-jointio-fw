@@ -25,6 +25,14 @@ void in_init(void) {
 	P1OUT = 0x00;
 	P1DIR = 0xFF;
 
+	ADC10AE0 = 0;
+	ADC10AE1 = 0;
+	ADC10CTL0 = 0;
+	ADC10CTL1 = 0;
+	ADC10MEM = 0;
+	ADC10DTC0 = 0;
+	ADC10DTC1 = 0;
+
 	/* Inputs */
 	ADC10AE0 = 0xFF;
 
