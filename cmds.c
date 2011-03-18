@@ -67,7 +67,12 @@ static uint8_t sric_output_get(const sric_if_t *iface) {
 }
 
 static uint8_t sric_input_a(const sric_if_t *iface) {
-	memcpy(iface->txbuf+SRIC_DATA, in_buffer, 16);
+	uint8_t i;
+
+	for( i=0; i<8; i++ ) {
+		iface->txbuf[SRIC_DATA + i*2] = in_buffer[i] >> 8;
+		iface->txbuf[SRIC_DATA + i*2 + 1] = in_buffer[i] & 0xff;
+	}
 	return 16;
 }
 
