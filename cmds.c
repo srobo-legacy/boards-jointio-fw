@@ -23,11 +23,28 @@
 #include "trigger.h"
 #include "flash430/sric-flash.h"
 
+/* Set the outputs to the bits of the given byte.
+ * Response:
+ * 0: Output values */
 static uint8_t sric_output_set(const sric_if_t *iface);
+
+/* Read the current output values
+   Response:
+   0: Single byte containing the outputs. */
 static uint8_t sric_output_get(const sric_if_t *iface);
+
+/* Read the analogue values of the inputs
+   Response: 16 16-bit values. */
 static uint8_t sric_input_a(const sric_if_t *iface);
+
+/* Read the digital values of the inputs
+   0: The input values */
 static uint8_t sric_input_d(const sric_if_t *iface);
+
+/* Enable/disable the SMPS
+ * 0: Whether the smps should be enabled (non-zero = true) */
 static uint8_t sric_smps(const sric_if_t *iface);
+
 static uint8_t sric_trigger_set_en(const sric_if_t *iface);
 static uint8_t sric_trigger_set_thresh(const sric_if_t *iface);
 static uint8_t sric_trigger_set_op(const sric_if_t *iface);
