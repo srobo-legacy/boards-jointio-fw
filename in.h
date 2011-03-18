@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #define INPUT_THRESHOLD (1024/2)
+#define NUM_INPUTS 8
 
 extern uint16_t in_buffer[8];
 
