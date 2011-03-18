@@ -30,6 +30,7 @@
 #include "smps.h"
 #include "out.h"
 #include "in.h"
+#include "trigger.h"
 
 const usci_t usci_config[1] = {
 	{
@@ -90,6 +91,7 @@ void init(void) {
 	smps_init();
 	out_init();
 	in_init();
+	trigger_init();
 
 	pinint_init();
 	sched_init();
@@ -103,6 +105,8 @@ void init(void) {
 }
 
 int main(void) {
+	uint8_t trig_flags;
+
 	/* Disable watchdog */
 	WDTCTL = WDTHOLD | WDTPW;
 
@@ -110,6 +114,16 @@ int main(void) {
 
 	while(1) {
 		in_set(in_get_d());
+		if (trig_flags = trigger_check()) {
+			sric_if.tx_lock();
+
+			sric_if.txbuf[SRIC_DEST] = 1;
+			sric_if.txbuf[SRIC_SRC] = sric_addr;
+			sric_if.txbuf[SRIC_LEN] = 1;
+			sric_if.txbuf[SRIC_DATA] = trig_flags;
+
+			sric_if.tx_cmd_start(5, true);
+		}
 		sric_flash_poll();
 		sric_poll();
 	}
