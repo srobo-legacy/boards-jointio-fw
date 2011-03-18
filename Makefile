@@ -6,7 +6,7 @@ CFLAGS := -g -mmcu=${ARCH} -Wall -O3 -std=gnu99
 CFLAGS += -include `pwd`/config.h
 LDFLAGS :=
 
-O_FILES = main.o smps.o in.o out.o cmds.o
+O_FILES = main.o smps.o in.o out.o cmds.o trigger.o
 SUBDIRS = drivers libsric flash430
 
 LDFLAGS += -Ldrivers -ldrivers
