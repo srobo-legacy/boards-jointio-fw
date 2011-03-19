@@ -87,8 +87,9 @@ static uint8_t sric_input_a(const sric_if_t *iface) {
 	uint8_t i;
 
 	for( i=0; i<8; i++ ) {
-		iface->txbuf[SRIC_DATA + i*2] = in_buffer[i] >> 8;
-		iface->txbuf[SRIC_DATA + i*2 + 1] = in_buffer[i] & 0xff;
+		/* Yup, for historical reasons it's little-endian */
+		iface->txbuf[SRIC_DATA + i*2] = in_buffer[i] & 0xff;
+		iface->txbuf[SRIC_DATA + i*2 + 1] = in_buffer[i] >> 8;
 	}
 	return 16;
 }
